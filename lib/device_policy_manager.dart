@@ -32,7 +32,7 @@ class DevicePolicyManager {
   /// request administrator permission
   /// it will open the adminstartor permission page and return `true` once the permission granted.
   /// An optional message providing additional explanation for why the admin is being added.
-  static Future<bool> requestPermession(
+  static Future<bool> requestPermission(
       [String message =
           "This app is requesting adminstrator permission"]) async {
     try {
@@ -70,4 +70,23 @@ class DevicePolicyManager {
       rethrow;
     }
   }
+
+  static Future<void> disableCamera() async {
+    try {
+      await _channel.invokeMethod('disableCamera');
+    } on PlatformException catch (error) {
+      log("$error");
+      rethrow;
+    }
+  }
+
+  static Future<void> enableCamera() async {
+    try {
+      await _channel.invokeMethod('enableCamera');
+    } on PlatformException catch (error) {
+      log("$error");
+      rethrow;
+    }
+  }
+
 }

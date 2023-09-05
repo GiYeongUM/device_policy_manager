@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
               children: [
                 TextButton(
                   onPressed: () async {
-                    await DevicePolicyManager.requestPermession(
+                    await DevicePolicyManager.requestPermission(
                         "Your app is requesting the Adminstration permission");
                   },
                   child: const Text("Enable administrative"),

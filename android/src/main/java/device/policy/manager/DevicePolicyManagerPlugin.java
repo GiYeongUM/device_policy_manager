@@ -63,6 +63,22 @@ public class DevicePolicyManagerPlugin
             } else {
                 result.error("ERROR", "You need to enable the Admin Device Features", null);
             }
+        } else if (call.method.equals("disableCamera")) {
+            boolean active = deviceManger.isAdminActive(compName);
+            if (active) {
+                deviceManger.setCameraDisabled(compName, true);
+                result.success(null);
+            } else {
+                result.error("ERROR", "You need to enable the Admin Device Features", null);
+            }
+            else if (call.method.equals("enableCamera")) {
+                boolean active = deviceManger.isAdminActive(compName);
+                if (active) {
+                    deviceManger.setCameraDisabled(compName, true);
+                    result.success(null);
+                } else {
+                    result.error("ERROR", "You need to enable the Admin Device Features", null);
+                }
         } else {
             result.notImplemented();
         }
